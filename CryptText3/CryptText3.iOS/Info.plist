@@ -17,7 +17,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string></string>
+	<string>8.4</string>
 	<key>CFBundleDisplayName</key>
 	<string>CryptText3</string>
 	<key>CFBundleIdentifier</key>
