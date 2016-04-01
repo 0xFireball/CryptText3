@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:utils="clr-namespace:Xamarin.Forms.Utilities;assembly=CryptText3"
+             x:Class="CryptText3.MainView">
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness"
+                iOS="20, 40, 20, 20"
+                Android="20, 20, 20, 20"
+                WinPhone="20, 20, 20, 20" />
+  </ContentPage.Padding>
+  <ContentPage.Content>
+    <StackLayout VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand"
+                 Orientation="Vertical"
+                 Spacing="15">
+      <Label Text="Enter an encryption key" />
+      <utils:DoneEntry x:Name="keyText" Text="" Placeholder="Encryption Key" />
+      <Label Text="Enter plaintext or ciphertext" />
+      <utils:DoneEntry x:Name="rndText" Text="" Placeholder="Plaintext or Ciphertext" />
+      <Button x:Name="encryptButon" Text="Encrypt" Clicked="OnEncrypt" />
+      <Button x:Name="decryptButon" Text="Decrypt" Clicked="OnDecrypt" />
+      <Label Text="Output" />
+      <utils:DoneEntry x:Name="resultText" Text="" Placeholder="Cryptographic Result" />
+      <Button x:Name="copyButton" Text="Copy Result" Clicked="OnCopyResult" />
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>
