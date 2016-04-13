@@ -1,13 +1,12 @@
-﻿using System;
-using Xamarin.Forms.Platform.iOS;
-using Xamarin.Forms;
-using UIKit;
-using CoreGraphics;
-
-using Xamarin.Forms.Utilities;
+﻿using CoreGraphics;
 using CryptText3.iOS;
+using UIKit;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
+using Xamarin.Forms.Utilities;
 
 [assembly: ExportRenderer(typeof(DoneEntry), typeof(DoneEntryRenderer))]
+
 namespace CryptText3.iOS
 {
     public class DoneEntryRenderer : EntryRenderer

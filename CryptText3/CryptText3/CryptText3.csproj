@@ -38,7 +38,9 @@
     <Compile Include="App.cs" />
     <Compile Include="DoneEntry.cs" />
     <Compile Include="IClipboardService.cs" />
+    <Compile Include="IFileStorage.cs" />
     <Compile Include="IPowerAES.cs" />
+    <Compile Include="IPowerRSA.cs" />
     <Compile Include="MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>

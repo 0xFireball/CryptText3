@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using CryptText3.iOS;
 using UIKit;
-
 using Xamarin.Forms;
-using CryptText3.iOS;
 
 [assembly: Dependency(typeof(ClipboardService))]
 
@@ -17,6 +13,7 @@ namespace CryptText3.iOS
             UIPasteboard clipboard = UIPasteboard.General;
             clipboard.String = text;
         }
+
         public bool IsImplemented
         {
             get

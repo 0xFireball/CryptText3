@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Security.Cryptography;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
-using Xamarin.Forms;
 using CryptText3.iOS;
+using Xamarin.Forms;
 
 [assembly: Dependency(typeof(PowerAES))]
 
@@ -146,7 +144,6 @@ namespace CryptText3.iOS
                 byte[] inputBytes = Encoding.UTF8.GetBytes(input);
                 byte[] hash = sha512.ComputeHash(inputBytes);
                 return HexString(hash);
-
             }
             catch (Exception ex)
             {
