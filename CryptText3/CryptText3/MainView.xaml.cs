@@ -80,11 +80,11 @@ namespace CryptText3
                 var answer = await this.DisplayAlert("Warning!", "Generating a new RSA key pair will overwrite the old one, and you will lose your ability to decrypt messages encrypted with those keys! Are you sure you want to continue?", "Cancel", "I'm sure");
                 if (answer)
                 {
-                    generateKeyPairButton.Enabled = false;
+                    generateKeyPairButton.IsEnabled = false;
                     generateKeyPairButton.Text = "Generating Keys...";
 
                     generateKeyPairButton.Text = "Generate Key Pair";
-                    generateKeyPairButton.Enabled = true;
+                    generateKeyPairButton.IsEnabled = true;
                 }
             }
             catch (PowerCryptException pcX)

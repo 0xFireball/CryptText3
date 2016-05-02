@@ -4,15 +4,21 @@ namespace CryptText3
 {
     public class App : Application
     {
+        #region Public Constructors
+
         public App()
         {
             // The root page of your application
             MainPage = new MainView();
         }
 
-        protected override void OnStart()
+        #endregion Public Constructors
+
+        #region Protected Methods
+
+        protected override void OnResume()
         {
-            // Handle when your app starts
+            // Handle when your app resumes
         }
 
         protected override void OnSleep()
@@ -20,9 +26,11 @@ namespace CryptText3
             // Handle when your app sleeps
         }
 
-        protected override void OnResume()
+        protected override void OnStart()
         {
-            // Handle when your app resumes
+            // Handle when your app starts
         }
+
+        #endregion Protected Methods
     }
 }

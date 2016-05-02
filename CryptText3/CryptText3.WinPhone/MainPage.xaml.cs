@@ -14,7 +14,6 @@ namespace CryptText3.WinPhone
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
-
             LoadApplication(new CryptText3.App());
         }
 
