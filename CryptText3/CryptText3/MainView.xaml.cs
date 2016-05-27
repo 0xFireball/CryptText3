@@ -45,10 +45,10 @@ namespace CryptText3
         {
             try
             {
-                string plaintext = rndText.Text;
-                string key = keyText.Text;
+                string plaintext = RndText.Text;
+                string key = KeyText.Text;
                 string ciphertext = powerAESProvider.Encrypt(plaintext, key);
-                resultText.Text = ciphertext;
+                ResultText.Text = ciphertext;
             }
             catch (PowerCryptException pcX)
             {
@@ -61,10 +61,10 @@ namespace CryptText3
         {
             try
             {
-                string ciphertext = rndText.Text;
-                string key = keyText.Text;
+                string ciphertext = RndText.Text;
+                string key = KeyText.Text;
                 string plaintext = powerAESProvider.Decrypt(ciphertext, key);
-                resultText.Text = plaintext;
+                ResultText.Text = plaintext;
             }
             catch (PowerCryptException pcX)
             {
@@ -80,11 +80,11 @@ namespace CryptText3
                 var answer = await this.DisplayAlert("Warning!", "Generating a new RSA key pair will overwrite the old one, and you will lose your ability to decrypt messages encrypted with those keys! Are you sure you want to continue?", "Cancel", "I'm sure");
                 if (answer)
                 {
-                    generateKeyPairButton.IsEnabled = false;
-                    generateKeyPairButton.Text = "Generating Keys...";
+                    GenerateKeyPairButton.IsEnabled = false;
+                    GenerateKeyPairButton.Text = "Generating Keys...";
 
-                    generateKeyPairButton.Text = "Generate Key Pair";
-                    generateKeyPairButton.IsEnabled = true;
+                    GenerateKeyPairButton.Text = "Generate Key Pair";
+                    GenerateKeyPairButton.IsEnabled = true;
                 }
             }
             catch (PowerCryptException pcX)
@@ -110,7 +110,7 @@ namespace CryptText3
         {
             var clipboardProvider = DependencyService.Get<IClipboardService>();
             if (clipboardProvider.IsImplemented)
-                clipboardProvider.CopyToClipboard(resultText.Text);
+                clipboardProvider.CopyToClipboard(ResultText.Text);
             else
                 await this.DisplayAlert(
                     "Notice", "Sorry, clipboard has not yet been implemented on this platform.", "OK");

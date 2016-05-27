@@ -17,14 +17,14 @@
                    Orientation="Vertical"
                    Spacing="15">
           <Label Text="Enter an encryption key" />
-          <utils:DoneEntry x:Name="keyText" Text="" Placeholder="Encryption Key" />
+          <utils:DoneEntry x:Name="KeyText" Text="" Placeholder="Encryption Key" />
           <Label Text="Enter plaintext or ciphertext" />
-          <utils:DoneEntry x:Name="rndText" Text="" Placeholder="Plaintext or Ciphertext" />
-          <Button x:Name="encryptButon" Text="Encrypt" Clicked="OnEncrypt" />
-          <Button x:Name="decryptButon" Text="Decrypt" Clicked="OnDecrypt" />
+          <utils:DoneEntry x:Name="RndText" Text="" Placeholder="Plaintext or Ciphertext" />
+          <Button x:Name="EncryptButon" Text="Encrypt" Clicked="OnEncrypt" />
+          <Button x:Name="DecryptButon" Text="Decrypt" Clicked="OnDecrypt" />
           <Label Text="Output" />
-          <utils:DoneEntry x:Name="resultText" Text="" Placeholder="Cryptographic Result" />
-          <Button x:Name="copyButton" Text="Copy Result" Clicked="OnCopyResult" />
+          <utils:DoneEntry x:Name="ResultText" Text="" Placeholder="Cryptographic Result" />
+          <Button x:Name="CopyButton" Text="Copy Result" Clicked="OnCopyResult" />
         </StackLayout>
       </ContentPage.Content>
     </ContentPage>
@@ -40,14 +40,14 @@
                    HorizontalOptions="FillAndExpand"
                    Orientation="Vertical"
                    Spacing="15">
-          <Button x:Name="generateKeyPairButton" Text="Generate Key Pair" Clicked="OnGenerateKey" />
+          <Button x:Name="GenerateKeyPairButton" Text="Generate Key Pair" Clicked="OnGenerateKey" />
           <Label Text="Enter text" />
-          <utils:DoneEntry x:Name="rsaPlainText" Text="" Placeholder="Text" />
-          <Button x:Name="privateKeyEncryptButton" Text="Encrypt (Private key)" Clicked="OnPrivateKeyEncrypt" />
-          <Button x:Name="publicKeyEncryptButton" Text="Encrypt (Public key)" Clicked="OnPublicKeyEncrypt" />
+          <utils:DoneEntry x:Name="RsaPlainText" Text="" Placeholder="Text" />
+          <Button x:Name="PrivateKeyEncryptButton" Text="Encrypt (Private key)" Clicked="OnPrivateKeyEncrypt" />
+          <Button x:Name="PublicKeyEncryptButton" Text="Encrypt (Public key)" Clicked="OnPublicKeyEncrypt" />
           <Label Text="Output" />
-          <utils:DoneEntry x:Name="rsaResultText" Text="" Placeholder="Cryptographic Result" />
-          <Button x:Name="copyRSAButton" Text="Copy Result" Clicked="OnCopyRSAResult" />
+          <utils:DoneEntry x:Name="RsaResultText" Text="" Placeholder="Cryptographic Result" />
+          <Button x:Name="CopyRsaButton" Text="Copy Result" Clicked="OnCopyRSAResult" />
         </StackLayout>
       </ContentPage.Content>
     </ContentPage>
