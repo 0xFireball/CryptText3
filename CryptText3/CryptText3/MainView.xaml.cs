@@ -5,20 +5,20 @@ namespace CryptText3
 {
     public partial class MainView : TabbedPage
     {
-        public static IPowerAES powerAESProvider;
-        public static IPowerRSA powerRSAProvider;
-        public static IFileStorage fileStorageProvider;
-        public static int RSA_KEY_SIZE = 4096;
+        public static IPowerAES PowerAESProvider;
+        public static IPowerRSA PowerRSAProvider;
+        public static IFileStorage FileStorageProvider;
+        public static int RSAKeySize = 4096;
 
-        public static string RSA_PRIKEY_FILE = "rsa.prikey";
-        public static string RSA_PUBKEY_FILE = "rsa.pubkey";
+        public static string RSAPrikeyFile = "rsa.prikey";
+        public static string RSAPubkeyFile = "rsa.pubkey";
 
         public MainView()
         {
             InitializeComponent();
-            powerAESProvider = DependencyService.Get<IPowerAES>();
-            powerRSAProvider = DependencyService.Get<IPowerRSA>();
-            fileStorageProvider = DependencyService.Get<IFileStorage>();
+            PowerAESProvider = DependencyService.Get<IPowerAES>();
+            PowerRSAProvider = DependencyService.Get<IPowerRSA>();
+            FileStorageProvider = DependencyService.Get<IFileStorage>();
             InitializeCrypt();
         }
 
@@ -26,11 +26,11 @@ namespace CryptText3
         {
             try
             {
-                var isSavedPriKey = fileStorageProvider.FileExists(RSA_PRIKEY_FILE);
+                var isSavedPriKey = FileStorageProvider.FileExists(RSAPrikeyFile);
                 if (isSavedPriKey)
                 {
-                    var keyInfo = fileStorageProvider.LoadText(RSA_PRIKEY_FILE);
-                    powerRSAProvider.ReinitializePowerRSA(keyInfo, RSA_KEY_SIZE);
+                    var keyInfo = FileStorageProvider.LoadText(RSAPrikeyFile);
+                    PowerRSAProvider.ReinitializePowerRSA(keyInfo, RSAKeySize);
                 }
             }
             catch (Exception ex)
@@ -47,7 +47,7 @@ namespace CryptText3
             {
                 var plaintext = RndText.Text;
                 var key = KeyText.Text;
-                var ciphertext = powerAESProvider.Encrypt(plaintext, key);
+                var ciphertext = PowerAESProvider.Encrypt(plaintext, key);
                 ResultText.Text = ciphertext;
             }
             catch (PowerCryptException pcX)
@@ -63,7 +63,7 @@ namespace CryptText3
             {
                 var ciphertext = RndText.Text;
                 var key = KeyText.Text;
-                var plaintext = powerAESProvider.Decrypt(ciphertext, key);
+                var plaintext = PowerAESProvider.Decrypt(ciphertext, key);
                 ResultText.Text = plaintext;
             }
             catch (PowerCryptException pcX)
@@ -84,9 +84,10 @@ namespace CryptText3
                             "Cancel", "I'm sure");
                 if (answer)
                 {
+                    
                     GenerateKeyPairButton.IsEnabled = false;
                     GenerateKeyPairButton.Text = "Generating Keys...";
-
+                    
                     GenerateKeyPairButton.Text = "Generate Key Pair";
                     GenerateKeyPairButton.IsEnabled = true;
                 }
