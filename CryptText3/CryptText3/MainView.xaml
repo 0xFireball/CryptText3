@@ -1,55 +1,56 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:utils="clr-namespace:Xamarin.Forms.Utilities;assembly=CryptText3"
-             x:Class="CryptText3.MainView">
-  <TabbedPage.Children>
-    <ContentPage Title="AES">
-      <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness"
-                    iOS="20, 40, 20, 20"
-                    Android="20, 20, 20, 20"
-                    WinPhone="20, 20, 20, 20" />
-      </ContentPage.Padding>
-      <ContentPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand"
-                   HorizontalOptions="FillAndExpand"
-                   Orientation="Vertical"
-                   Spacing="15">
-          <Label Text="Enter an encryption key" />
-          <utils:DoneEntry x:Name="KeyText" Text="" Placeholder="Encryption Key" />
-          <Label Text="Enter plaintext or ciphertext" />
-          <utils:DoneEntry x:Name="RndText" Text="" Placeholder="Plaintext or Ciphertext" />
-          <Button x:Name="EncryptButon" Text="Encrypt" Clicked="OnEncrypt" />
-          <Button x:Name="DecryptButon" Text="Decrypt" Clicked="OnDecrypt" />
-          <Label Text="Output" />
-          <utils:DoneEntry x:Name="ResultText" Text="" Placeholder="Cryptographic Result" />
-          <Button x:Name="CopyButton" Text="Copy Result" Clicked="OnCopyResult" />
-        </StackLayout>
-      </ContentPage.Content>
-    </ContentPage>
-    <ContentPage Title="RSA">
-      <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness"
-                    iOS="20, 40, 20, 20"
-                    Android="20, 20, 20, 20"
-                    WinPhone="20, 20, 20, 20" />
-      </ContentPage.Padding>
-      <ContentPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand"
-                   HorizontalOptions="FillAndExpand"
-                   Orientation="Vertical"
-                   Spacing="15">
-          <Button x:Name="GenerateKeyPairButton" Text="Generate Key Pair" Clicked="OnGenerateKey" />
-          <Label Text="Enter text" />
-          <utils:DoneEntry x:Name="RsaPlainText" Text="" Placeholder="Text" />
-          <Button x:Name="PrivateKeyEncryptButton" Text="Encrypt (Private key)" Clicked="OnPrivateKeyEncrypt" />
-          <Button x:Name="PublicKeyEncryptButton" Text="Encrypt (Public key)" Clicked="OnPublicKeyEncrypt" />
-          <Label Text="Output" />
-          <utils:DoneEntry x:Name="RsaResultText" Text="" Placeholder="Cryptographic Result" />
-          <Button x:Name="CopyRsaButton" Text="Copy Result" Clicked="OnCopyRSAResult" />
-        </StackLayout>
-      </ContentPage.Content>
-    </ContentPage>
-  </TabbedPage.Children>
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:utils="clr-namespace:Xamarin.Forms.Utilities;assembly=CryptText3"
+            x:Class="CryptText3.MainView">
+    <TabbedPage.Children>
+        <ContentPage Title="AES">
+            <ContentPage.Padding>
+                <OnPlatform x:TypeArguments="Thickness"
+                            iOS="20, 40, 20, 20"
+                            Android="20, 20, 20, 20"
+                            WinPhone="20, 20, 20, 20" />
+            </ContentPage.Padding>
+            <ContentPage.Content>
+                <StackLayout VerticalOptions="FillAndExpand"
+                             HorizontalOptions="FillAndExpand"
+                             Orientation="Vertical"
+                             Spacing="15">
+                    <Label Text="Enter an encryption key" />
+                    <utils:DoneEntry x:Name="KeyText" Text="" Placeholder="Encryption Key" />
+                    <Label Text="Enter plaintext or ciphertext" />
+                    <utils:DoneEntry x:Name="RndText" Text="" Placeholder="Plaintext or Ciphertext" />
+                    <Button x:Name="EncryptButon" Text="Encrypt" Clicked="OnEncrypt" />
+                    <Button x:Name="DecryptButon" Text="Decrypt" Clicked="OnDecrypt" />
+                    <Label Text="Output" />
+                    <utils:DoneEntry x:Name="ResultText" Text="" Placeholder="Cryptographic Result" />
+                    <Button x:Name="CopyButton" Text="Copy Result" Clicked="OnCopyResult" />
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+        <ContentPage Title="RSA">
+            <ContentPage.Padding>
+                <OnPlatform x:TypeArguments="Thickness"
+                            iOS="20, 40, 20, 20"
+                            Android="20, 20, 20, 20"
+                            WinPhone="20, 20, 20, 20" />
+            </ContentPage.Padding>
+            <ContentPage.Content>
+                <StackLayout VerticalOptions="FillAndExpand"
+                             HorizontalOptions="FillAndExpand"
+                             Orientation="Vertical"
+                             Spacing="15">
+                    <Button x:Name="GenerateKeyPairButton" Text="Generate Key Pair" Clicked="OnGenerateKey" />
+                    <Label Text="Enter text" />
+                    <utils:DoneEntry x:Name="RsaPlainText" Text="" Placeholder="Text" />
+                    <Button x:Name="PrivateKeyEncryptButton" Text="Encrypt (Private key)" Clicked="OnPrivateKeyEncrypt" />
+                    <Button x:Name="PublicKeyEncryptButton" Text="Encrypt (Public key)" Clicked="OnPublicKeyEncrypt" />
+                    <Label Text="Output" />
+                    <utils:DoneEntry x:Name="RsaResultText" Text="" Placeholder="Cryptographic Result" />
+                    <Button x:Name="CopyRsaButton" Text="Copy Result" Clicked="OnCopyRSAResult" />
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </TabbedPage.Children>
 </TabbedPage>
