@@ -24,10 +24,7 @@ namespace CryptText3.Droid
 
         public bool IsImplemented
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
     }
 }

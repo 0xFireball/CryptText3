@@ -5,23 +5,25 @@
 namespace CryptText3.WinPhone
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    ///     An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
-            this.NavigationCacheMode = NavigationCacheMode.Required;
+            NavigationCacheMode = NavigationCacheMode.Required;
             LoadApplication(new CryptText3.App());
         }
 
         /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
+        ///     Invoked when this page is about to be displayed in a Frame.
         /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
+        /// <param name="e">
+        ///     Event data that describes how this page was reached.
+        ///     This parameter is typically used to configure the page.
+        /// </param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.

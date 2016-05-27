@@ -10,16 +10,13 @@ namespace CryptText3.iOS
     {
         public void CopyToClipboard(string text)
         {
-            UIPasteboard clipboard = UIPasteboard.General;
+            var clipboard = UIPasteboard.General;
             clipboard.String = text;
         }
 
         public bool IsImplemented
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
     }
 }

@@ -13,21 +13,21 @@ namespace CryptText3.Droid
         {
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var filePath = Path.Combine(documentsPath, filename);
-            System.IO.File.WriteAllText(filePath, text);
+            File.WriteAllText(filePath, text);
         }
 
         public string LoadText(string filename)
         {
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var filePath = Path.Combine(documentsPath, filename);
-            return System.IO.File.ReadAllText(filePath);
+            return File.ReadAllText(filePath);
         }
 
         public bool FileExists(string filename)
         {
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var filePath = Path.Combine(documentsPath, filename);
-            return System.IO.File.Exists(filePath);
+            return File.Exists(filePath);
         }
     }
 }

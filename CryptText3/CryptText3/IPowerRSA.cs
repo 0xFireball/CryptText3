@@ -2,6 +2,9 @@
 {
     public interface IPowerRSA
     {
+        string PublicKey { get; }
+
+        string PrivateKey { get; }
         string EncryptStringWithPublicKey(string plainText);
 
         string EncryptStringWithPrivateKey(string plainText);
@@ -11,10 +14,6 @@
         string DecryptStringWithPublicKey(string cipherText);
 
         void Dispose();
-
-        string PublicKey { get; }
-
-        string PrivateKey { get; }
 
         void ReinitializePowerRSA(string rsaKeyInfo, int keySize, PHashAlgorithm hashAlgorithm);
 

@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Xamarin.Forms;
 
 namespace CryptText3
@@ -27,17 +26,18 @@ namespace CryptText3
         {
             try
             {
-                bool isSavedPriKey = fileStorageProvider.FileExists(RSA_PRIKEY_FILE);
+                var isSavedPriKey = fileStorageProvider.FileExists(RSA_PRIKEY_FILE);
                 if (isSavedPriKey)
                 {
-                    string keyInfo = fileStorageProvider.LoadText(RSA_PRIKEY_FILE);
+                    var keyInfo = fileStorageProvider.LoadText(RSA_PRIKEY_FILE);
                     powerRSAProvider.ReinitializePowerRSA(keyInfo, RSA_KEY_SIZE);
                 }
             }
             catch (Exception ex)
             {
-                await this.DisplayAlert(
-                    "An error occurred. Please report this to the developer, and reset your keys, as they are likely corrupted. ", ex.Message, "OK");
+                await DisplayAlert(
+                    "An error occurred. Please report this to the developer, and reset your keys, as they are likely corrupted. ",
+                    ex.Message, "OK");
             }
         }
 
@@ -45,14 +45,14 @@ namespace CryptText3
         {
             try
             {
-                string plaintext = RndText.Text;
-                string key = KeyText.Text;
-                string ciphertext = powerAESProvider.Encrypt(plaintext, key);
+                var plaintext = RndText.Text;
+                var key = KeyText.Text;
+                var ciphertext = powerAESProvider.Encrypt(plaintext, key);
                 ResultText.Text = ciphertext;
             }
             catch (PowerCryptException pcX)
             {
-                await this.DisplayAlert(
+                await DisplayAlert(
                     "Cryptographic Error", pcX.Message, "OK");
             }
         }
@@ -61,14 +61,14 @@ namespace CryptText3
         {
             try
             {
-                string ciphertext = RndText.Text;
-                string key = KeyText.Text;
-                string plaintext = powerAESProvider.Decrypt(ciphertext, key);
+                var ciphertext = RndText.Text;
+                var key = KeyText.Text;
+                var plaintext = powerAESProvider.Decrypt(ciphertext, key);
                 ResultText.Text = plaintext;
             }
             catch (PowerCryptException pcX)
             {
-                await this.DisplayAlert(
+                await DisplayAlert(
                     "Cryptographic Error", pcX.Message, "OK");
             }
         }
@@ -77,7 +77,11 @@ namespace CryptText3
         {
             try
             {
-                var answer = await this.DisplayAlert("Warning!", "Generating a new RSA key pair will overwrite the old one, and you will lose your ability to decrypt messages encrypted with those keys! Are you sure you want to continue?", "Cancel", "I'm sure");
+                var answer =
+                    await
+                        DisplayAlert("Warning!",
+                            "Generating a new RSA key pair will overwrite the old one, and you will lose your ability to decrypt messages encrypted with those keys! Are you sure you want to continue?",
+                            "Cancel", "I'm sure");
                 if (answer)
                 {
                     GenerateKeyPairButton.IsEnabled = false;
@@ -89,7 +93,7 @@ namespace CryptText3
             }
             catch (PowerCryptException pcX)
             {
-                await this.DisplayAlert(
+                await DisplayAlert(
                     "Cryptographic Error", pcX.Message, "OK");
             }
         }
@@ -112,7 +116,7 @@ namespace CryptText3
             if (clipboardProvider.IsImplemented)
                 clipboardProvider.CopyToClipboard(ResultText.Text);
             else
-                await this.DisplayAlert(
+                await DisplayAlert(
                     "Notice", "Sorry, clipboard has not yet been implemented on this platform.", "OK");
         }
     }

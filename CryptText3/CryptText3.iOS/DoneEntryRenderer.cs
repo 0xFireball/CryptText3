@@ -23,7 +23,7 @@ namespace CryptText3.iOS
                 new UIBarButtonItem(UIBarButtonSystemItem.Done, delegate { Control.ResignFirstResponder(); })
             };
 
-            this.Control.InputAccessoryView = toolbar;
+            Control.InputAccessoryView = toolbar;
         }
     }
 }
