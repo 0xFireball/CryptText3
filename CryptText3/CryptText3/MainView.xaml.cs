@@ -1,4 +1,5 @@
 ﻿using System;
+using Acr.UserDialogs;
 using Xamarin.Forms;
 
 namespace CryptText3
@@ -84,10 +85,17 @@ namespace CryptText3
                             "Cancel", "I'm sure");
                 if (answer)
                 {
-                    
                     GenerateKeyPairButton.IsEnabled = false;
+
+                    var pwResult = await UserDialogs.Instance.PromptAsync("Please enter a passphrase to encrypt your key pair", "Password", inputType: InputType.Password);
+                    var keyEncryptPassphrase = pwResult.Text;
+
                     GenerateKeyPairButton.Text = "Generating Keys...";
-                    
+
+                    PowerRSAProvider.ReinitializePowerRSA(4096);
+                    var encryptedRsaInfo = PowerAESProvider.Encrypt(keyEncryptPassphrase, PowerRSAProvider.PrivateKey);
+                    FileStorageProvider.SaveText("rsainfo", encryptedRsaInfo); //Save the encrypted RSA info
+
                     GenerateKeyPairButton.Text = "Generate Key Pair";
                     GenerateKeyPairButton.IsEnabled = true;
                 }
