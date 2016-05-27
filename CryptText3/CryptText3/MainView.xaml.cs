@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Xamarin.Forms;
 
@@ -82,7 +83,7 @@ namespace CryptText3
                     await
                         DisplayAlert("Warning!",
                             "Generating a new RSA key pair will overwrite the old one, and you will lose your ability to decrypt messages encrypted with those keys! Are you sure you want to continue?",
-                            "Cancel", "I'm sure");
+                            "I'm sure", "Cancel");
                 if (answer)
                 {
                     GenerateKeyPairButton.IsEnabled = false;
@@ -92,7 +93,8 @@ namespace CryptText3
 
                     GenerateKeyPairButton.Text = "Generating Keys...";
 
-                    PowerRSAProvider.ReinitializePowerRSA(4096);
+                    //Generate keys asynchronously, as this can be quite time consuming
+                    await Task.Run(()=>PowerRSAProvider.ReinitializePowerRSA(4096));
                     var encryptedRsaInfo = PowerAESProvider.Encrypt(keyEncryptPassphrase, PowerRSAProvider.PrivateKey);
                     FileStorageProvider.SaveText("rsainfo", encryptedRsaInfo); //Save the encrypted RSA info
 
