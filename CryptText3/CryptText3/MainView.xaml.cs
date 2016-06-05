@@ -11,6 +11,7 @@ namespace CryptText3
         public static IPowerRSA PowerRSAProvider;
         public static IFileStorage FileStorageProvider;
         public static int RSAKeySize = 2048;
+        public static bool RsaKeypairAvailable = false;
 
         public static string RSAPrikeyFile = "rsa.prikey";
 
@@ -46,11 +47,12 @@ namespace CryptText3
                     }
                 }
                 ExistingKeyInfo.Text = keyAvailable ? "Keys loaded from storage" : "No keypair found.";
+                RsaKeypairAvailable = keyAvailable;
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Critical error",
-                    $"A critical error occurred. Please report this to the developer, and reset your keys, as they are likely corrupted. Detailed error: {ex.Message}", "OK");
+                await DisplayAlert("Error",
+                    "The saved keypair data could not be loaded. Please ensure that your passphrase is correct.", "OK");
             }
         }
 
@@ -121,16 +123,32 @@ namespace CryptText3
             }
         }
 
+        private async Task<bool> EnsureKeypairAvailable()
+        {
+            if (!RsaKeypairAvailable)
+            {
+                await DisplayAlert(
+                    "Keypair unavailable",
+                    "Sorry, this operation is unavailable as no keypair has been loaded. Please generate one or restart the application and successfully decrypt the saved keypair.",
+                    "OK");
+                return false;
+            }
+            return true;
+        }
+
         private async void OnPrivateKeyEncrypt(object sender, EventArgs e)
         {
+            if (!await EnsureKeypairAvailable()) return;
         }
 
         private async void OnPublicKeyEncrypt(object sender, EventArgs e)
         {
+            if (!await EnsureKeypairAvailable()) return;
         }
 
         private async void OnCopyRSAResult(object sender, EventArgs e)
         {
+            if (!await EnsureKeypairAvailable()) return;
         }
 
         private async void OnCopyResult(object sender, EventArgs e)
