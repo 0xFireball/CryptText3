@@ -11,7 +11,7 @@ namespace CryptText3
         public static IPowerRSA PowerRSAProvider;
         public static IFileStorage FileStorageProvider;
         public static int RSAKeySize = 2048;
-        public static bool RsaKeypairAvailable = false;
+        public static bool RsaKeypairAvailable;
 
         public static string RSAPrikeyFile = "rsa.prikey";
 
@@ -33,7 +33,11 @@ namespace CryptText3
                 if (isSavedPriKey)
                 {
                     var encryptedKeyInfo = FileStorageProvider.LoadText(RSAPrikeyFile);
-                    var pwResult = await UserDialogs.Instance.PromptAsync("Please enter your passphrase to decrypt and load your key pair", "Passphrase", inputType: InputType.Password);
+                    var pwResult =
+                        await
+                            UserDialogs.Instance.PromptAsync(
+                                "Please enter your passphrase to decrypt and load your key pair", "Passphrase",
+                                inputType: InputType.Password);
                     var keypairPassphrase = pwResult.Text;
                     try
                     {
@@ -43,7 +47,9 @@ namespace CryptText3
                     }
                     catch (PowerCryptException)
                     {
-                        await DisplayAlert("Decryption Error", "The saved keypair data could not be decrypted with the given passphrase.", "Dismiss");
+                        await
+                            DisplayAlert("Decryption Error",
+                                "The saved keypair data could not be decrypted with the given passphrase.", "Dismiss");
                     }
                 }
                 ExistingKeyInfo.Text = keyAvailable ? "Keys loaded from storage" : "No keypair found.";
@@ -100,12 +106,21 @@ namespace CryptText3
                 if (!answer) return;
                 GenerateKeyPairButton.IsEnabled = false;
 
-                var pwResult = await UserDialogs.Instance.PromptAsync("Please enter a passphrase to encrypt your key pair", "Password", inputType: InputType.Password);
+                var pwResult =
+                    await
+                        UserDialogs.Instance.PromptAsync("Please enter a passphrase to encrypt your key pair",
+                            "Password", inputType: InputType.Password);
                 var keyEncryptPassphrase = pwResult.Text;
 
                 GenerateKeyPairButton.Text = "Generating Keys...";
 
-                var progressController = UserDialogs.Instance.Progress(new ProgressDialogConfig() { AutoShow = true, IsDeterministic = false, Title = "Please wait, generating keys..." });
+                var progressController =
+                    UserDialogs.Instance.Progress(new ProgressDialogConfig
+                    {
+                        AutoShow = true,
+                        IsDeterministic = false,
+                        Title = "Please wait, generating keys..."
+                    });
                 progressController.Show();
                 //Generate keys asynchronously, as this can be quite time consuming
                 await Task.Run(() => PowerRSAProvider.ReinitializePowerRSA(RSAKeySize));
