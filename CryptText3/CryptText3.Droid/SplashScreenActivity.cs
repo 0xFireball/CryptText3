@@ -12,7 +12,7 @@ namespace CryptText3.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            Thread.Sleep(1500); //Delay
+            
             StartActivity(typeof(MainActivity));
         }
     }
