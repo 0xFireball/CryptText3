@@ -1,4 +1,6 @@
 # CryptText3
+
+[![Join the chat at https://gitter.im/0xFireball/CryptText3](https://badges.gitter.im/0xFireball/CryptText3.svg)](https://gitter.im/0xFireball/CryptText3?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 A simple Android/iOS application to encrypt text with AES-256.
 
 Built using Xamarin.Forms and powered by [PowerCrypt4](https://github.com/exaphaser/PowerCrypt4).
